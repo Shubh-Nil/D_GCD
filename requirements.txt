@@ -1,0 +1,9 @@
+torch==2.4.0
+numpy==1.26.4
+higher
+pandas==2.2.2
+scikit-learn==1.5.1
+matplotlib==3.9.2
+tqdm==4.66.5
+wandb==0.17.7
+torchvision==0.19.0

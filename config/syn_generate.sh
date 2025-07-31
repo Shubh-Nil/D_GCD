@@ -5,11 +5,12 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REPO_ROOT="$( dirname "$SCRIPT_DIR" )"
 
 # Local variables for key arguments
+DATASET="PACS"
 PROMPT="Add Snow Background"
 BACKGROUND_TYPE=$(echo "$PROMPT" | awk '{print $2}')
 
 SOURCE_DIR="$REPO_ROOT/datasets/PACS"
-TARGET_DIR="$REPO_ROOT/datasets_synthetic/${BACKGROUND_TYPE}_Background_Dataset
+TARGET_DIR="$REPO_ROOT/datasets_synthetic/$DATASET/${BACKGROUND_TYPE}_Background_Dataset
 
 # Check and create target directory if it doesn't exist
 if [ ! -d "$TARGET_DIR" ]; then

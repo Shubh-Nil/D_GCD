@@ -13,8 +13,4 @@ wandb/
 *.pkl
 *.xlsx
 *.out
-test.py
-*.txt
-Baseline_2
-Pix2Pix2.py
 *TRASH
