@@ -14,7 +14,6 @@ wandb/
 *.xlsx
 *.out
 test.py
-*.png
 *.txt
 Baseline_2
 Pix2Pix2.py

@@ -70,13 +70,6 @@ def main():
     lamb = 0.2
     feat_dim = 768
 
-    # if args.dataset_name=="PACS":
-    #     val_domains=["Snow_Background_Dataset","White_Background_Dataset","Water_Background_Dataset"]
-    # if args.dataset_name=="Office_Home":
-    #     val_domains=["IceBlue_Background_Dataset", "Grey_Background_Dataset", "Water_Background_Dataset"]
-    # # if args.dataset_name=="Domain_Net":
-    # #     val_domains=["Add_Grey_Background","Add_Forest_Background"]
-
     # initialize WandB
     # wandb.init(
     #     project=f"DGCD_{args.dataset_name}",
@@ -87,8 +80,7 @@ def main():
     # prepare paths
     CKPT_DIR       = os.path.join(REPO_ROOT, 'checkpoints', args.dataset_name, args.source_domain_name)
     EPISODE_DIR    = os.path.join(REPO_ROOT, f'Episode_all_{args.dataset_name}', args.source_domain_name)
-    # DATA_DIR       = os.path.join(REPO_ROOT, 'datasets', args.dataset_name)
-    DATA_DIR = "/home/shubhranil/DATASETS/PACS"
+    DATA_DIR       = os.path.join(REPO_ROOT, 'datasets', args.dataset_name)
     SYN_DATA_PATH  = os.path.join(REPO_ROOT, 'data', f'syn_dataset_path_{args.dataset_name}.csv')
     RESULT_DIR     = os.path.join(REPO_ROOT, 'Results', args.dataset_name, args.source_domain_name)
     os.makedirs(CKPT_DIR, exist_ok=True)

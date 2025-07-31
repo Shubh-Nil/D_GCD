@@ -1,15 +1,22 @@
 # Domain Generalized Category discovery (DGCD)
+We introduce a novel paradigm of Domain Generalization in GCD (DG-GCD), where only source data is available for training, while the target domain, with a distinct data distribution, remains unseen until inference. To address this challenging setting, we introduce DG2CD-Net, a method designed to learn domain-invariant and discriminative embedding space for GCD.
+
+![DGCD Teaser](assets/teaser.png)
+
+- 🔗 [Paper](https://arxiv.org/abs/2503.14897)  
+- 📁 [Project Page](https://shubh-nil.github.io/DG-GCD/)  
+- 🖼️ [Poster](https://shubh-nil.github.io/DG-GCD/poster.html)
+
+---
 
 ## Installation
-
-Clone this repository
 
 ```bash
 git clone https://github.com/Shubh-Nil/D_GCD.git
 cd D_GCD
 ```
 
-Set up the environment
+Environment setup:
 
 ```bash
 conda create --name dgcd python==3.12
@@ -17,53 +24,24 @@ conda activate dgcd
 pip install -r requirements.txt
 ```
 
-## Data
+## Data Setup
 
-Create a `datasets` directory and download the required datasets:
+Please refer to [DATASET.md](DATASET.md) for detailed instructions.
 
-```bash
-mkdir -p datasets
+## Model training/ testing
+Checkpoints are available at - 
+
+```
+cd config
+```
+For training - 
+```
+chmod +x train.sh
+train.sh
 ```
 
-### Download PACS
-
-Use the official Google Drive folder to download the PACS dataset:
-
-```bash
-pip install gdown
-gdown --folder https://drive.google.com/drive/folders/0B6x7gtvErXgfUU1WcGY5SzdwZVk -O datasets/PACS
+For testing - 
 ```
-
-([drive.google.com](https://drive.google.com/drive/folders/0B6x7gtvErXgfUU1WcGY5SzdwZVk?resourcekey=0-2fvpQY_QSyJf2uIECzqPuQ&usp=sharing), [huggingface.co](https://huggingface.co/datasets/flwrlabs/pacs?utm_source=chatgpt.com))
-
-### Download Office-Home
-
-```bash
-# Download and unzip the Office-Home dataset
-pip install gdown
-gdown 'https://drive.google.com/uc?id=0B81rNlvomiwed0V1YUxQdC1uOTg' -O datasets/OfficeHome.zip
-unzip datasets/OfficeHome.zip -d datasets/OfficeHome
-rm datasets/OfficeHome.zip
+chmod +x test.sh
+test.sh
 ```
-
-([github.com](https://github.com/LeoXinhaoLee/Imbalanced-Source-free-Domain-Adaptation))
-
-### Download DomainNet
-
-```bash
-# Download and extract the cleaned DomainNet dataset
-mkdir -p datasets/DomainNet
-cd datasets/DomainNet
-for domain in clipart infograph painting quickdraw real sketch; do
-  echo "Downloading DomainNet ${domain}..."
-  wget http://ai.bu.edu/M3SDA/${domain}.zip
-  unzip ${domain}.zip -d ${domain}
-  rm ${domain}.zip
-done
-```
-
-([ai.bu.edu](https://ai.bu.edu/M3SDA/?utm_source=chatgpt.com))
-
-## Synthetic Dataset 
-
-python syn_data.py --dataset datasets/PACS --output datasets/PACS_synthetic
