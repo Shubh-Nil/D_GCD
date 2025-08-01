@@ -32,7 +32,7 @@ Please refer to [DATASET.md](DATASET.md) for detailed instructions.
 Download the model checkpoints for your dataset of choice: 
 * [**PACS**](https://example.com/weights/PACS.pkl)
 * [**Office\_Home**](https://example.com/weights/Office_Home.pkl)
-* [**Domain_\Net**](https://example.com/weights/DomainNet.pkl)
+* [**Domain\_Net**](https://example.com/weights/DomainNet.pkl)
 
 Navigate to the `config` directory, where you can **train** or **test** the model on different datasets and tune the hyperparameters to as per your needs:
 ```
