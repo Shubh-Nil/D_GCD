@@ -86,5 +86,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# python val_generate.py --dataset_name PACS

@@ -9,8 +9,8 @@ DATASET="PACS"
 PROMPT="Add Snow Background"
 BACKGROUND_TYPE=$(echo "$PROMPT" | awk '{print $2}')
 
-SOURCE_DIR="$REPO_ROOT/datasets/PACS"
-TARGET_DIR="$REPO_ROOT/datasets_synthetic/$DATASET/${BACKGROUND_TYPE}_Background_Dataset
+SOURCE_DIR="$REPO_ROOT/datasets/$DATASET"
+TARGET_DIR="$REPO_ROOT/datasets_synthetic/$DATASET/${BACKGROUND_TYPE}_Background_Dataset"
 
 # Check and create target directory if it doesn't exist
 if [ ! -d "$TARGET_DIR" ]; then

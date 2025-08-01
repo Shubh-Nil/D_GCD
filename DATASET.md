@@ -1,50 +1,62 @@
-## Data
+## Dataset Preparation
 
-Create a `datasets` directory and download the required datasets:
+Ensure you are in the `D_GCD` root directory, then create a `datasets` folder:
 
 ```bash
 mkdir -p datasets
 ```
 
-### Download PACS
+Download the following datasets inside the  `datasets` folder: [**PACS**](https://www.kaggle.com/datasets/nickfratto/pacs-dataset) | [**Office\_Home**](https://www.hemanthdv.org/officeHomeDataset.html) | [**Domain\_Net**](https://huggingface.co/datasets/wltjr1007/DomainNet)
 
-Use the official Google Drive folder to download the PACS dataset:
+`datasets` directory should follow this structure:
 
-```bash
-pip install gdown
-gdown --folder https://drive.google.com/drive/folders/0B6x7gtvErXgfUU1WcGY5SzdwZVk -O datasets/PACS
+```
+datasets/
+├── PACS/
+│   ├── class1/
+│   │   ├── image1.jpg
+│   │   └── image2.jpg
+│   ├── class2/
+│   │   ├── image1.jpg
+│   │   └── image2.jpg
+│   └── ...
+├── Office_Home/
+│   ├── class1/
+│   │   ├── image1.jpg
+│   │   └── image2.jpg
+│   └── ...
+└── DomainNet/
+    ├── class1/
+    │   ├── image1.jpg
+    │   └── image2.jpg
+    └── ...
 ```
 
-([drive.google.com](https://drive.google.com/drive/folders/0B6x7gtvErXgfUU1WcGY5SzdwZVk?resourcekey=0-2fvpQY_QSyJf2uIECzqPuQ&usp=sharing), [huggingface.co](https://huggingface.co/datasets/flwrlabs/pacs?utm_source=chatgpt.com))
+## Synthetic Dataset Preparation
 
-### Download Office-Home
-
-```bash
-# Download and unzip the Office-Home dataset
-pip install gdown
-gdown 'https://drive.google.com/uc?id=0B81rNlvomiwed0V1YUxQdC1uOTg' -O datasets/OfficeHome.zip
-unzip datasets/OfficeHome.zip -d datasets/OfficeHome
-rm datasets/OfficeHome.zip
-```
-
-([github.com](https://github.com/LeoXinhaoLee/Imbalanced-Source-free-Domain-Adaptation))
-
-### Download DomainNet
+Generate Synthetic domains for *your preferred dataset* using *prompts* fed into the [**InstructPix2Pix**](https://github.com/timothybrooks/instruct-pix2pix) diffusion model.
 
 ```bash
-# Download and extract the cleaned DomainNet dataset
-mkdir -p datasets/DomainNet
-cd datasets/DomainNet
-for domain in clipart infograph painting quickdraw real sketch; do
-  echo "Downloading DomainNet ${domain}..."
-  wget http://ai.bu.edu/M3SDA/${domain}.zip
-  unzip ${domain}.zip -d ${domain}
-  rm ${domain}.zip
-done
+chmod +x config/syn_generate.sh
+python config/syn_generate.sh
 ```
 
-([ai.bu.edu](https://ai.bu.edu/M3SDA/?utm_source=chatgpt.com))
+**Style your prompts**
+* `Add Snow Background`
+* `Add Forest Background`
+* `Add Desert Background` etc.
 
-## Synthetic Dataset 
+This creates a *Synthetic domain* under:
 
-python syn_data.py --dataset datasets/PACS --output datasets/PACS_synthetic
+```
+datasets_synthetic/{your_preferred_dataset}/{synthetic_dataset}
+```
+
+**Reserve Validation domains**
+From the generated synthetic folders, set aside desired ones for validation:
+
+```bash
+python scripts/val_generate.py --dataset_name {your_preferred_dataset}
+```
+
+You can now proceed to the **Model training/ testing section** ih the `README.md`.
