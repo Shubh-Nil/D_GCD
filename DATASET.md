@@ -59,4 +59,4 @@ From the generated synthetic folders, set aside desired ones for validation:
 python scripts/val_generate.py --dataset_name {your_preferred_dataset}
 ```
 
-You can now proceed to the **Model training/ testing section** ih the `README.md`.
+You can now proceed to the **Model training/ testing section** in the `README.md`.
